@@ -63,4 +63,6 @@ endif
 if INSTALL_SYSTEMD
 	[ -e $(DESTDIR)/usr/lib/systemd/system ] || mkdir -p $(DESTDIR)/usr/lib/systemd/system
 	cp scripts/shairport-sync.service $(DESTDIR)/usr/lib/systemd/system
+	adduser --system --no-create-home --group shairport-sync
+	usermod -a -G audio shairport-sync
 endif
